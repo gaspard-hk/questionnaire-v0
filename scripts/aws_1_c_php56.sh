@@ -1,4 +1,4 @@
-sudo yum install php70-mbstring.x86_64 php70-zip.x86_64 -y
+sudo yum install php56-mbstring.x86_64 php56-zip.x86_64 -y
 sudo service httpd restart
 cd /var/www/html
 wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.tar.gz
