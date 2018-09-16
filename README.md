@@ -1,5 +1,5 @@
 # questionnaire-v0
-This is the original version of the questionnaire. All sensitive data are removed before making open source. It will moved to questionnaire-v1 for further development after
+This is the original version of the questionnaire. All sensitive data are removed before making open source. The repository is for the temporary development. It will moved to questionnaire-v1 for further development after
 - repairing the dependency file
 - constructing build script for different environment.
 
