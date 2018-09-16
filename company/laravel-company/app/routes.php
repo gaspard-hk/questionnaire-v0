@@ -124,6 +124,13 @@ Route::post('/questionnaire/q1-post', array(
     )    
 );
 
+Route::post('/questionnaire/q2all-post', array(
+    'as' => 'questionnaire-q2all-post',
+    'uses' => 'QuestionnaireController@postQ2'
+)
+    );
+
+
 Route::post('/questionnaire/q2-post/membernocheck', array(       
         'as' => 'questionnaire-q2-membernocheck-ajax-post',
         'uses' => 'QuestionnaireController@postQ2MemberNoCheckAjax'
@@ -134,7 +141,9 @@ Route::post('/questionnaire/q2-post/customertelcheck', array(
         'as' => 'questionnaire-q2-customertelcheck-ajax-post',
         'uses' => 'QuestionnaireController@postQ2CustomerTelCheckAjax'
     )    
-);     
+);
+
+
 
 Route::post('/questionnaire/q2same-post', array(
         'as' => 'questionnaire-q2same-post',

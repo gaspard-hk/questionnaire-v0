@@ -49,38 +49,35 @@ class QuestionnaireController extends BaseController {
                         
             if($validator->fails())
             {                
-                /*return Redirect::route('questionnaire-q1')
-                        ->withErrors($validator)
-                        ->withInput();*/                
                 return View::make('questionnaire.q-error');
-            }   else {
-                $shop = Shop::where('id','=',Input::get('shops_id'))->first()->toArray();                
-                //return Input::get('inputmethod');
-                if(Input::get('inputmethod') == 'single'){
-                    return View::make('questionnaire.q2single')
-                        ->with('shop',$shop)
-                        ->with('shops_id',Input::get('shops_id'))
-                        ->with('visiteddate',Input::get('visiteddate'))                        
-                        ->with('staffname',Input::get('staffname1'));
-                }elseif(Input::get('inputmethod') == 'same'){
-                                   // return View::make('questionnaire.q-error');
-
-                return View::make('questionnaire.q2same')
-                        ->with('shop',$shop)
-                        ->with('shops_id',Input::get('shops_id'))
-                        ->with('visiteddate',Input::get('visiteddate'))
-                        ->with('staffname1',Input::get('staffname1'))
-                        ->with('staffname2',Input::get('staffname2'));
+            } else {
+                $shop = Shop::where('id','=',Input::get('shops_id'))->first()->toArray();
+                $number_of_staff = Input::get('number_of_staff');
+                $inputmethod = Input::get('inputmethod');
+                if($inputmethod == 'same'){
+                    $number_of_form = 1;
+                }elseif($inputmethod == 'different'){
+                    $number_of_form = $number_of_staff;
                 }else{
-                                   // return View::make('questionnaire.q-error');
-
-                return View::make('questionnaire.q2different')
-                        ->with('shop',$shop)
-                        ->with('shops_id',Input::get('shops_id'))
-                        ->with('visiteddate',Input::get('visiteddate'))
-                        ->with('staffname1',Input::get('staffname1'))
-                        ->with('staffname2',Input::get('staffname2'));
+                    return View::make('questionnaire.q-error');
                 }
+                
+                $staffname = array();
+                $number_of_staff = Input::get('number_of_staff');
+
+                for ($i = 1; $i <= $number_of_staff; $i++){
+                    $staffname[$i] = Input::get('staffname'.$i );
+                }
+                
+                return View::make('questionnaire.q2')
+                ->with('shop',$shop)
+                ->with('shops_id', Input::get('shops_id'))
+                ->with('visiteddate', Input::get('visiteddate'))
+                ->with('number_of_staff', $number_of_staff)
+                ->with('number_of_form', $number_of_form)
+                ->with('staffname', $staffname)
+                ->with('inputmethod', $inputmethod);
+            
                 //return View::make('questionnaire.q2')                                                
                 /*
                 return Redirect::route('questionnaire-q2',array(
@@ -227,7 +224,13 @@ class QuestionnaireController extends BaseController {
                 
         }
         
-
+        public function postQ2()
+        {
+            return View::make('questionnaire.q3');
+        }
+        
+        
+        
         public function postQ2different()
         {            
             $validator = Validator::make(Input::all(),
