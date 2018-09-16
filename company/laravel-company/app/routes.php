@@ -124,48 +124,22 @@ Route::post('/questionnaire/q1-post', array(
     )    
 );
 
-Route::post('/questionnaire/q2all-post', array(
-    'as' => 'questionnaire-q2all-post',
+Route::post('/questionnaire/q2-post', array(
+    'as' => 'questionnaire-q2-post',
     'uses' => 'QuestionnaireController@postQ2'
-)
-    );
+    )
+);
 
 
-Route::post('/questionnaire/q2-post/membernocheck', array(       
+Route::post('/questionnaire/q2-post-membernocheck', array(       
         'as' => 'questionnaire-q2-membernocheck-ajax-post',
         'uses' => 'QuestionnaireController@postQ2MemberNoCheckAjax'
     )    
 );     
 
-Route::post('/questionnaire/q2-post/customertelcheck', array(       
+Route::post('/questionnaire/q2-post-customertelcheck', array(       
         'as' => 'questionnaire-q2-customertelcheck-ajax-post',
         'uses' => 'QuestionnaireController@postQ2CustomerTelCheckAjax'
-    )    
-);
-
-
-
-Route::post('/questionnaire/q2same-post', array(
-        'as' => 'questionnaire-q2same-post',
-        'uses' => 'QuestionnaireController@postQ2same'
-    )    
-);
-
-Route::post('/questionnaire/q2different-post', array(
-        'as' => 'questionnaire-q2different-post',
-        'uses' => 'QuestionnaireController@postQ2different'
-    )    
-);
-
-Route::post('/questionnaire/q2single-post', array(
-        'as' => 'questionnaire-q2single-post',
-        'uses' => 'QuestionnaireController@postQ2single'
-    )    
-);
-
-Route::get('/questionnaire/q2-post', array(
-        'as' => 'questionnaire-q2-post-redirect',
-        'uses' => 'QuestionnaireController@getQ1'
     )    
 );
 

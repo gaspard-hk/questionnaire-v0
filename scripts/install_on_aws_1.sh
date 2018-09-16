@@ -1,4 +1,6 @@
 #!/usr/bin/sh
-sudo yum update -y
-sudo yum install -y httpd24 php70 mysql56-server php70-mysqlnd
-sudo service httpd start
+ssh -i $1 $2 'bash -s' < './aws_1_a.sh'
+ssh -i $1 $2 'bash -s' < './aws_1_b.sh'
+ssh -i $1 $2 'bash -s' < './aws_1_c.sh'
+ssh -i $1 $2 'bash -s' < './aws_1_d.sh'
+ssh -i $1 $2 'bash -s' < './aws_1_b.sh'

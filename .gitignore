@@ -2,4 +2,4 @@
 /company/laravel-company/vendor/
 /company/laravel-company/uploadfiles/member/**
 /company/laravel-company/uploadfiles/staff/**
-
+/company/laravel-company/app/views/questionnaire
