@@ -15,11 +15,28 @@ class Questionnaire extends Eloquent implements UserInterface, RemindableInterfa
 	 * @var string
 	 */
 	protected $table = 'questionnaire';
-        protected $fillable = array('shops_id','shopnamechi','shopnameeng','shopnamejap','visiteddate','explanation',
+        protected $fillable = array('shops_id','shopnamechi','shopnameeng','shopnamejap','visiteddate','staffname',
+            'customername','customertel',
+            'type',
+            'lifeexplanation',
+            'lifetechnique',
+            'lifecomfort',
+            'lifecourtesy',
+            'lifeefficiency',
+            'lifeappearance',
+            'medicalprofessionalism',
+            'medicalexplanation',
+            'medicalattitude',
+            'medicalexplanation',            
+            'callcourtesy',
+            'callexplanation',
+            'callefficiency',
+            'reception',
+            'room',
             'attitude','sincerity','manner',
             'efficiency','tidiness','reception',
-            'room','customername','customertel',
-            'memberno','staffname','comment',
+            'room',
+            'comment',
             'created_at','updated_at','deleted_at'
            );
 
