@@ -156,22 +156,43 @@ class QuestionnaireController extends BaseController {
             $inputmethod = Input::get('inputmethod');
             if ($inputmethod == 'same'){
                 for ($i = 1; $i <= $number_of_staff; $i++){
-                    $valid = validateQ2($i);
+                    $valid = $this->validateQ2(1);
                     if ($valid){
-                        Input::get('staffname'.$i);
+                        $staffname = Input::get('staffname'.$i);
+                        $create = Questionnaire::create (array(
+                            'shops_id'              => Input::get('shops_id'),
+                            'shopnamechi'           => Input::get('shopnamechi'),
+                            'visiteddate'           => Input::get('visiteddate'),
+                            'customername'          => Input::get('customername'),
+                            'customertel' => Input::get('customertel'),
+                            'memberno' => Input::get('memberno'),
+                            'explanation' => Input::get('explanation1'),
+                            'attitude' => Input::get('attitude1'),
+                            'sincerity' => Input::get('sincerity1'),
+                            'manner' => Input::get('manner1'),
+                            'efficiency' => Input::get('efficiency1'),
+                            'tidiness' => Input::get('tidiness1'),
+                            'reception' =>Input::get('reception1'),
+                            'room' => Input::get('room1'),
+                            'staffname' =>Input::get('staffname1'),
+                            'comment' => Input::get('comment1'),
+                            'IP' => Request::getClientIP()
+                        ));
                     }else{
                         return View::make('questionnaire.q-error');                        
                     }
                 }
+                return View::make('questionnaire.q3');
             }elseif ($inputmethod == 'different'){
                 for ($i = 1; $i <= $number_of_staff; $i++){
-                    $valid = validateQ2($i);
+                    $valid = $this->validateQ2($i);
                     if ($valid){
                         Input::get('staffname'.$i);
                     }else{
                         return View::make('questionnaire.q-error');
                     }                    
                 }
+                return View::make('questionnaire.q3');
             }else{
                 return View::make('questionnaire.q-error');
             }
@@ -180,7 +201,6 @@ class QuestionnaireController extends BaseController {
         
         private function validateQ2($no)
         {
-            /*
             $validator = Validator::make(Input::all(),
                 array(
                     'shops_id'                      => 'required',
@@ -203,7 +223,6 @@ class QuestionnaireController extends BaseController {
                     'room'.$no                      => 'required'
                 )
             );
-            */
             $validator = true;
             return $validator;
         }
@@ -213,28 +232,7 @@ class QuestionnaireController extends BaseController {
         
         public function postQ2different()
         {            
-            $validator = Validator::make(Input::all(),
-                    array(
-                        'shops_id'                  => 'required',
-                        'visiteddate'               => 'required',
-                        'type'                      => 'required',
-                        'lifeexplanation'           => 'required',
-                        'lifetechnique'             => 'required',
-                        'lifecomfort'               => 'required',
-                        'lifecourtesy'              => 'required',
-                        'lifeefficiency'            => 'required',
-                        'lifeappearance'            => 'required',
-                        'medicalprofessionalism'    => 'required',
-                        'medicalexplanation'        => 'required',
-                        'medicalattitude'           => 'required',
-                        'medicalexplanation'        => 'required',
-                        'callcourtesy'              => 'required',
-                        'callexplanation'           => 'required',
-                        'callefficiency'            => 'required',
-                        'reception'                 => 'required',
-                        'room'                      => 'required'
-                    )
-            );
+           
                         
             if($validator->fails())
             {                
