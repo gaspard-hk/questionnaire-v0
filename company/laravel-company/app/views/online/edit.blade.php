@@ -86,13 +86,31 @@ $(document).ready( function () {
 			</tr>
 			<tr>
 				<th align="left">
-					講解:
+					種類:
 				</th>
 				<td>
 					<div class="field">
-						<select name="explanation">
+						<select name="type">
+						@if ($questionnaire['type'] == "life")
+						<option value="life" selected>生活美容</option>
+						<option value="medical">醫學美容</option>
+						@else
+						<option value="life">生活美容</option>
+						<option value="medical" selected>醫學美容</option>
+						@endif
+						</select>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th align="left">
+					講解(生活美容):
+				</th>
+				<td>
+					<div class="field">
+						<select name="lifeexplanation">
 						@for ($i = 5; $i >= 1; $i --)						
-						@if ($i == $questionnaire['explanation'])
+						@if ($i == $questionnaire['lifeexplanation'])
 						<option value="{{ $i }}" selected> {{ $i }}</option>
 						@else
 						<option value="{{ $i }}"> {{ $i }}</option>
@@ -104,13 +122,13 @@ $(document).ready( function () {
 			</tr>
 			<tr>
 				<th align="left">
-					態度:
+					技術(生活美容):
 				</th>
 				<td>
 					<div class="field">
-						<select name="attitude">
+						<select name="lifetechnique">
 						@for ($i = 5; $i >= 1; $i --)						
-						@if ($i == $questionnaire['attitude'])
+						@if ($i == $questionnaire['lifetechnique'])
 						<option value="{{ $i }}" selected> {{ $i }}</option>
 						@else
 						<option value="{{ $i }}"> {{ $i }}</option>
@@ -122,13 +140,13 @@ $(document).ready( function () {
 			</tr>
 			<tr>
 				<th align="left">
-					熱誠:
+					舒適度(生活美容):
 				</th>
 				<td>
 					<div class="field">
-						<select name="sincerity">
+						<select name="lifecomfort">
 						@for ($i = 5; $i >= 1; $i --)						
-						@if ($i == $questionnaire['sincerity'])
+						@if ($i == $questionnaire['lifecomfort'])
 						<option value="{{ $i }}" selected> {{ $i }}</option>
 						@else
 						<option value="{{ $i }}"> {{ $i }}</option>
@@ -140,18 +158,13 @@ $(document).ready( function () {
 			</tr>
 			<tr>
 				<th align="left">
-					<font color=#ff9900><u>員工</u></font>
-				</th>
-			</tr>
-			<tr>
-				<th align="left">
-					禮貌:
+					禮貌和態度(生活美容):
 				</th>
 				<td>
 					<div class="field">
-						<select name="manner">
+						<select name="lifecourtesy">
 						@for ($i = 5; $i >= 1; $i --)						
-						@if ($i == $questionnaire['manner'])
+						@if ($i == $questionnaire['lifecourtesy'])
 						<option value="{{ $i }}" selected> {{ $i }}</option>
 						@else
 						<option value="{{ $i }}"> {{ $i }}</option>
@@ -163,13 +176,13 @@ $(document).ready( function () {
 			</tr>
 			<tr>
 				<th align="left">
-					效率:
+					效率(生活美容):
 				</th>
 				<td>
 					<div class="field">
-						<select name="efficiency">
+						<select name="lifeefficiency">
 						@for ($i = 5; $i >= 1; $i --)						
-						@if ($i == $questionnaire['efficiency'])
+						@if ($i == $questionnaire['lifeefficiency'])
 						<option value="{{ $i }}" selected> {{ $i }}</option>
 						@else
 						<option value="{{ $i }}"> {{ $i }}</option>
@@ -181,13 +194,13 @@ $(document).ready( function () {
 			</tr>
 			<tr>
 				<th align="left">
-					整潔:
+					儀容(生活美容):
 				</th>
 				<td>
 					<div class="field">
-						<select name="tidiness">
+						<select name="lifeappearance">
 						@for ($i = 5; $i >= 1; $i --)						
-						@if ($i == $questionnaire['tidiness'])
+						@if ($i == $questionnaire['lifeappearance'])
 						<option value="{{ $i }}" selected> {{ $i }}</option>
 						@else
 						<option value="{{ $i }}"> {{ $i }}</option>
@@ -199,8 +212,130 @@ $(document).ready( function () {
 			</tr>
 			<tr>
 				<th align="left">
-					<font color=#ff9900><u>清潔</u></font>
+					專業性(醫學美容):
 				</th>
+				<td>
+					<div class="field">
+						<select name="medicalprofessionalism">
+						@for ($i = 5; $i >= 1; $i --)						
+						@if ($i == $questionnaire['medicalprofessionalism'])
+						<option value="{{ $i }}" selected> {{ $i }}</option>
+						@else
+						<option value="{{ $i }}"> {{ $i }}</option>
+						@endif
+						@endfor
+						</select>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th align="left">
+					技術(醫學美容):
+				</th>
+				<td>
+					<div class="field">
+						<select name="medicaltechnique">
+						@for ($i = 5; $i >= 1; $i --)						
+						@if ($i == $questionnaire['medicaltechnique'])
+						<option value="{{ $i }}" selected> {{ $i }}</option>
+						@else
+						<option value="{{ $i }}"> {{ $i }}</option>
+						@endif
+						@endfor
+						</select>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th align="left">
+					態度(醫學美容):
+				</th>
+				<td>
+					<div class="field">
+						<select name="medicalattitude">
+						@for ($i = 5; $i >= 1; $i --)						
+						@if ($i == $questionnaire['medicalattitude'])
+						<option value="{{ $i }}" selected> {{ $i }}</option>
+						@else
+						<option value="{{ $i }}"> {{ $i }}</option>
+						@endif
+						@endfor
+						</select>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th align="left">
+					講解(醫學美容):
+				</th>
+				<td>
+					<div class="field">
+						<select name="medicalexplanation">
+						@for ($i = 5; $i >= 1; $i --)						
+						@if ($i == $questionnaire['medicalexplanation'])
+						<option value="{{ $i }}" selected> {{ $i }}</option>
+						@else
+						<option value="{{ $i }}"> {{ $i }}</option>
+						@endif
+						@endfor
+						</select>
+					</div>
+				</td>
+			</tr>
+
+			<tr>
+				<th align="left">
+					禮貌和態度(預約服務):
+				</th>
+				<td>
+					<div class="field">
+						<select name="callcourtesy">
+						@for ($i = 5; $i >= 1; $i --)						
+						@if ($i == $questionnaire['callcourtesy'])
+						<option value="{{ $i }}" selected> {{ $i }}</option>
+						@else
+						<option value="{{ $i }}"> {{ $i }}</option>
+						@endif
+						@endfor
+						</select>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th align="left">
+					講解(預約服務):
+				</th>
+				<td>
+					<div class="field">
+						<select name="callexplanation">
+						@for ($i = 5; $i >= 1; $i --)						
+						@if ($i == $questionnaire['callexplanation'])
+						<option value="{{ $i }}" selected> {{ $i }}</option>
+						@else
+						<option value="{{ $i }}"> {{ $i }}</option>
+						@endif
+						@endfor
+						</select>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th align="left">
+					效率(預約服務):
+				</th>
+				<td>
+					<div class="field">
+						<select name="callefficiency">
+						@for ($i = 5; $i >= 1; $i --)						
+						@if ($i == $questionnaire['callefficiency'])
+						<option value="{{ $i }}" selected> {{ $i }}</option>
+						@else
+						<option value="{{ $i }}"> {{ $i }}</option>
+						@endif
+						@endfor
+						</select>
+					</div>
+				</td>
 			</tr>
 			<tr>
 				<th align="left">

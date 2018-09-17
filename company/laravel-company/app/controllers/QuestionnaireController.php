@@ -92,63 +92,6 @@ class QuestionnaireController extends BaseController {
                 
         }
         
-        
-        public function postQ2single()
-        {            
-            $validator = Validator::make(Input::all(),
-                    array(
-                        'shops_id'        => 'required',
-                        'visiteddate'   => 'required',
-                        'explanation'   => 'required',
-                        'attitude'      => 'required',
-                        'sincerity'     => 'required',
-                        'manner'        => 'required',
-                        'efficiency'    => 'required',
-                        'tidiness'      => 'required',
-                        'reception'     => 'required',
-                        'room'          => 'required'						
-                    )
-            );
-                        
-            if($validator->fails())
-            {                
-                return View::make('questionnaire.q-error');
-            }   else { 
-                //return  Input::get('visiteddate');
-                $create1 = Questionnaire::create (array(
-                    'shops_id'         => Input::get('shops_id'),
-                    'shopnamechi'         => Input::get('shopnamechi'),
-                    'visiteddate'    => Input::get('visiteddate'),
-                    'explanation' => Input::get('explanation'),
-                    'attitude' => Input::get('attitude'),
-                    'sincerity' => Input::get('sincerity'),
-                    'manner' => Input::get('manner'),
-                    'efficiency' => Input::get('efficiency'),
-                    'tidiness' => Input::get('tidiness'),
-                    'reception' =>Input::get('reception'),
-                    'room' => Input::get('room'),
-                    'customername' => Input::get('customername'),
-                    'customertel' => Input::get('customertel'),
-                    'memberno' => Input::get('memberno'),
-                    'staffname' =>Input::get('staffname'),
-                    'comment' => Input::get('comment'),
-                    'IP' => Request::getClientIP()
-                ));
-                
-                
-                /*
-                $queries = DB::getQueryLog();
-                $last_query = end($queries);
-                return $last_query;
-                 * 
-                 */
-                return View::make('questionnaire.q3');
-            }
-            return View::make('questionnaire.q-error');
-                        
-                
-        }
-        
         public function postQ2()
         {
             $shops_id = Input::get('shops_id');
@@ -160,23 +103,31 @@ class QuestionnaireController extends BaseController {
                     if ($valid){
                         $staffname = Input::get('staffname'.$i);
                         $create = Questionnaire::create (array(
-                            'shops_id'              => Input::get('shops_id'),
-                            'shopnamechi'           => Input::get('shopnamechi'),
-                            'visiteddate'           => Input::get('visiteddate'),
-                            'customername'          => Input::get('customername'),
-                            'customertel' => Input::get('customertel'),
-                            'memberno' => Input::get('memberno'),
-                            'explanation' => Input::get('explanation1'),
-                            'attitude' => Input::get('attitude1'),
-                            'sincerity' => Input::get('sincerity1'),
-                            'manner' => Input::get('manner1'),
-                            'efficiency' => Input::get('efficiency1'),
-                            'tidiness' => Input::get('tidiness1'),
-                            'reception' =>Input::get('reception1'),
-                            'room' => Input::get('room1'),
-                            'staffname' =>Input::get('staffname1'),
-                            'comment' => Input::get('comment1'),
-                            'IP' => Request::getClientIP()
+                            'shops_id'                  => Input::get('shops_id'),
+                            'shopnamechi'               => Input::get('shopnamechi'),
+                            'visiteddate'               => Input::get('visiteddate'),
+                            'customername'              => Input::get('customername'),
+                            'customertel'               => Input::get('customertel'),
+                            'memberno'                  => Input::get('memberno'),
+                            'staffname'                 => $staffname,
+                            'type'                      => Input::get('type'.$i),
+                            'lifeexplanation'           => Input::get('lifeexplanation1'),
+                            'lifetechnique'             => Input::get('lifetechnique1'),
+                            'lifecomfort'               => Input::get('lifecomfort1'),
+                            'lifecourtesy'              => Input::get('lifecourtesy1'),
+                            'lifeefficiency'            => Input::get('lifeefficiency1'),
+                            'lifeappearance'            => Input::get('lifeappearance1'),
+                            'medicalprofessionalism'    => Input::get('medicalprofessionalism1'),
+                            'medicaltechnique'          => Input::get('medicaltechnique1'),
+                            'medicalattitude'           => Input::get('medicalattitude1'),
+                            'medicalexplanation'        => Input::get('medicalexplanation1'),
+                            'callcourtesy'              => Input::get('callcourtesy1'),
+                            'callexplanation'           => Input::get('callexplanation1'),
+                            'callefficiency'            => Input::get('callefficiency1'),
+                            'reception'                 => Input::get('reception1'),
+                            'room'                      => Input::get('room1'),
+                            'comment'                   => Input::get('comment1'),
+                            'IP'                        => Request::getClientIP()
                         ));
                     }else{
                         return View::make('questionnaire.q-error');                        
@@ -187,7 +138,33 @@ class QuestionnaireController extends BaseController {
                 for ($i = 1; $i <= $number_of_staff; $i++){
                     $valid = $this->validateQ2($i);
                     if ($valid){
-                        Input::get('staffname'.$i);
+                        $create = Questionnaire::create (array(
+                            'shops_id'                  => Input::get('shops_id'),
+                            'shopnamechi'               => Input::get('shopnamechi'),
+                            'visiteddate'               => Input::get('visiteddate'),
+                            'customername'              => Input::get('customername'),
+                            'customertel'               => Input::get('customertel'),
+                            'memberno'                  => Input::get('memberno'),
+                            'staffname'                 => Input::get('staffname'.$i),
+                            'type'                      => Input::get('type'.$i),
+                            'lifeexplanation'           => Input::get('lifeexplanation'.$i),
+                            'lifetechnique'             => Input::get('lifetechnique'.$i),
+                            'lifecomfort'               => Input::get('lifecomfort'.$i),
+                            'lifecourtesy'              => Input::get('lifecourtesy'.$i),
+                            'lifeefficiency'            => Input::get('lifeefficiency'.$i),
+                            'lifeappearance'            => Input::get('lifeappearance'.$i),
+                            'medicalprofessionalism'    => Input::get('medicalprofessionalism'.$i),
+                            'medicaltechnique'          => Input::get('medicaltechnique'.$i),
+                            'medicalattitude'           => Input::get('medicalattitude'.$i),
+                            'medicalexplanation'        => Input::get('medicalexplanation'.$i),
+                            'callcourtesy'              => Input::get('callcourtesy'.$i),
+                            'callexplanation'           => Input::get('callexplanation'.$i),
+                            'callefficiency'            => Input::get('callefficiency'.$i),
+                            'reception'                 => Input::get('reception'.$i),
+                            'room'                      => Input::get('room'.$i),
+                            'comment'                   => Input::get('comment'.$i),
+                            'IP'                        => Request::getClientIP()
+                        ));
                     }else{
                         return View::make('questionnaire.q-error');
                     }                    
@@ -201,21 +178,11 @@ class QuestionnaireController extends BaseController {
         
         private function validateQ2($no)
         {
-            $validator = Validator::make(Input::all(),
+            $validator1 = Validator::make(Input::all(),
                 array(
                     'shops_id'                      => 'required',
                     'visiteddate'                   => 'required',
                     'type'.$no                      => 'required',
-                    'lifeexplanation'.$no           => 'required',
-                    'lifetechnique'.$no             => 'required',
-                    'lifecomfort'.$no               => 'required',
-                    'lifecourtesy'.$no              => 'required',
-                    'lifeefficiency'.$no            => 'required',
-                    'lifeappearance'.$no            => 'required',
-                    'medicalprofessionalism'.$no    => 'required',
-                    'medicalexplanation'.$no        => 'required',
-                    'medicalattitude'.$no           => 'required',
-                    'medicalexplanation'.$no        => 'required',
                     'callcourtesy'.$no              => 'required',
                     'callexplanation'.$no           => 'required',
                     'callefficiency'.$no            => 'required',
@@ -223,80 +190,34 @@ class QuestionnaireController extends BaseController {
                     'room'.$no                      => 'required'
                 )
             );
-            $validator = true;
-            return $validator;
-        }
-        
-        
-        
-        
-        public function postQ2different()
-        {            
-           
-                        
-            if($validator->fails())
-            {                
-                return View::make('questionnaire.q-error');
-            }   else { 
-                //return  Input::get('visiteddate');
-                $create1 = Questionnaire::create (array(
-                    'shops_id'         => Input::get('shops_id'),
-                    'shopnamechi'         => Input::get('shopnamechi'),
-                    'visiteddate'    => Input::get('visiteddate'),                    
-                    'customername' => Input::get('customername'),
-                    'customertel' => Input::get('customertel'),
-                    'memberno' => Input::get('memberno'),
-                    
-                    
-                    'explanation' => Input::get('explanation1'),
-                    'attitude' => Input::get('attitude1'),
-                    'sincerity' => Input::get('sincerity1'),
-                    'manner' => Input::get('manner1'),
-                    'efficiency' => Input::get('efficiency1'),
-                    'tidiness' => Input::get('tidiness1'),
-                    'reception' =>Input::get('reception1'),
-                    'room' => Input::get('room1'),
-                    
-                    'staffname' =>Input::get('staffname1'),
-                    'comment' => Input::get('comment1'),
-                    'IP' => Request::getClientIP()
-                ));
-                
-                $create2 = Questionnaire::create (array(
-                    'shops_id'         => Input::get('shops_id'),
-                    'shopnamechi'         => Input::get('shopnamechi'),
-                    'visiteddate'    => Input::get('visiteddate'),
-                    'customername' => Input::get('customername'),
-                    'customertel' => Input::get('customertel'),
-                    'memberno' => Input::get('memberno'),                    
-                    
-                    
-                    'explanation' => Input::get('explanation2'),
-                    'attitude' => Input::get('attitude2'),
-                    'sincerity' => Input::get('sincerity2'),
-                    'manner' => Input::get('manner2'),
-                    'efficiency' => Input::get('efficiency2'),
-                    'tidiness' => Input::get('tidiness2'),
-                    'reception' =>Input::get('reception2'),
-                    'room' => Input::get('room2'),
-                    
-                    
-                    'staffname' =>Input::get('staffname2'),
-                    'comment' => Input::get('comment2'),
-                    'IP' => Request::getClientIP()
-                ));
-                /*
-                $queries = DB::getQueryLog();
-                $last_query = end($queries);
-                return $last_query;
-                 * 
-                 */
-                return View::make('questionnaire.q3');
+            
+            if (Input::get('type'.$no) == 'life'){
+                $validator2 = Validator::make(Input::all(),
+                    array(
+                        'lifeexplanation'.$no           => 'required',
+                        'lifetechnique'.$no             => 'required',
+                        'lifecomfort'.$no               => 'required',
+                        'lifecourtesy'.$no              => 'required',
+                        'lifeefficiency'.$no            => 'required',
+                        'lifeappearance'.$no            => 'required',
+                    )
+                );
+            }elseif (Input::get('type'.$no) == 'medical'){
+                $validator2 = Validator::make(Input::all(),
+                    array(
+                        'medicalprofessionalism'.$no    => 'required',
+                        'medicaltechnique'.$no          => 'required',
+                        'medicalattitude'.$no           => 'required',
+                        'medicalexplanation'.$no        => 'required',
+                    )
+                );
+            }else{
+                $validator2 = false;
             }
-            return View::make('questionnaire.q-error');
-                        
-                
+            
+            return $validator1 && $validator2;
         }
+
         public function getQ2MemberNoCheckAjax(){
 
         }

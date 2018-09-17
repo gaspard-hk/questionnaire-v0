@@ -25,7 +25,7 @@ class Questionnaire extends Eloquent implements UserInterface, RemindableInterfa
             'lifeefficiency',
             'lifeappearance',
             'medicalprofessionalism',
-            'medicalexplanation',
+            'medicaltechnique',
             'medicalattitude',
             'medicalexplanation',            
             'callcourtesy',
@@ -33,9 +33,7 @@ class Questionnaire extends Eloquent implements UserInterface, RemindableInterfa
             'callefficiency',
             'reception',
             'room',
-            'attitude','sincerity','manner',
-            'efficiency','tidiness','reception',
-            'room',
+
             'comment',
             'created_at','updated_at','deleted_at'
            );

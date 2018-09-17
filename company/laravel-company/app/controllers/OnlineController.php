@@ -91,8 +91,8 @@ class OnlineController extends BaseController {
                         $recordarr->updated_at,
                         '<form action="'.URL::route('online-edit').'" method="get">'.
                         '<input type="hidden" name="id" value="'.$recordarr->id.'">'.
-			'<input type="submit" value="編輯">'.
-			Form::token().
+			             '<input type="submit" value="編輯">'.
+			             Form::token().
                         '</form>'
                     );
                 }
@@ -136,19 +136,29 @@ class OnlineController extends BaseController {
             $questionnaire->shopnamechi = Input::get('shopnamechi');
             $questionnaire->shopnamechi = Input::get('shopnamechi');
             $questionnaire->visiteddate = Input::get('visiteddate');
-            $questionnaire->explanation = Input::get('explanation');
-            $questionnaire->attitude = Input::get('attitude');
-            $questionnaire->sincerity = Input::get('sincerity');
-            $questionnaire->manner = Input::get('manner');
-            $questionnaire->efficiency = Input::get('efficiency');
-            $questionnaire->tidiness = Input::get('tidiness');
-            $questionnaire->reception =Input::get('reception');
+            
+            $questionnaire->type = Input::get('type');
+            $questionnaire->lifeexplanation = Input::get('lifeexplanation');
+            $questionnaire->lifetechnique = Input::get('lifetechnique');
+            $questionnaire->lifecomfort = Input::get('lifecomfort');
+            $questionnaire->lifecourtesy = Input::get('lifecourtesy');
+            $questionnaire->lifeefficiency = Input::get('lifeefficiency');
+            $questionnaire->lifeappearance = Input::get('lifeappearance');
+            $questionnaire->medicalprofessionalism = Input::get('medicalprofessionalism');
+            $questionnaire->medicaltechnique = Input::get('medicaltechnique');
+            $questionnaire->medicalattitude = Input::get('medicalattitude');
+            $questionnaire->medicalexplanation = Input::get('medicalexplanation');
+            $questionnaire->callcourtesy = Input::get('callcourtesy');
+            $questionnaire->callexplanation = Input::get('callexplanation');
+            $questionnaire->callefficiency = Input::get('callefficiency');
+            $questionnaire->reception = Input::get('reception');
             $questionnaire->room = Input::get('room');
+            $questionnaire->comment = Input::get('comment');
+            
             $questionnaire->customername = Input::get('customername');
             $questionnaire->customertel = Input::get('customertel');
             $questionnaire->memberno = Input::get('memberno');
             $questionnaire->staffname =Input::get('staffname');
-            $questionnaire->comment = Input::get('comment');
                     
             $questionnaire->save();
                 
