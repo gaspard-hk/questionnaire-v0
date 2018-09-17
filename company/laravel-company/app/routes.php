@@ -295,13 +295,17 @@ Route::group(array('before' => 'auth'), function(){
             'as' => 'statistic-export-report3c-post',
             'uses' => 'StatisticController@postExportReport3c'
         ));
-
+        
+        Route::post('/admin/statistic/export3d',array(
+            'as' => 'statistic-export-report3d-post',
+            'uses' => 'StatisticController@postExportReport3d'
+        ));
                         
         Route::post('/admin/statistic/export4',array(
             'as' => 'statistic-export-report4-post',
             'uses' => 'StatisticController@postExportReport4'
         ));
-        
+
         Route::post('/admin/statistic/delete',array(
             'as' => 'statistic-delete-post',
             'uses' => 'StatisticController@postDelete'

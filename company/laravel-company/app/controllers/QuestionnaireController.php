@@ -110,7 +110,7 @@ class QuestionnaireController extends BaseController {
                             'customertel'               => Input::get('customertel'),
                             'memberno'                  => Input::get('memberno'),
                             'staffname'                 => $staffname,
-                            'type'                      => Input::get('type'.$i),
+                            'type'                      => Input::get('type1'),
                             'lifeexplanation'           => Input::get('lifeexplanation1'),
                             'lifetechnique'             => Input::get('lifetechnique1'),
                             'lifecomfort'               => Input::get('lifecomfort1'),

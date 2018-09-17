@@ -111,7 +111,7 @@ $(document).ready( function () {
 	</form>
     </p>
   </div>
-<h3>匯出服務/員工/清潔分數月份報告(Excel)</h3>
+<h3>匯出生活美容/醫學美容/預約服務分數月份報告(Excel)</h3>
   <div>
     <p>        
         <form action="{{ URL::route('statistic-export-report2-post') }}" method="post">
@@ -183,29 +183,38 @@ $(document).ready( function () {
 				<th>
 				</th>
 				<td>
-                                            <input type="button" onclick="submitForm('{{ URL::route('statistic-export-report3a-post') }}','report3')" value="下載服務報告">
+                                            <input type="button" onclick="submitForm('{{ URL::route('statistic-export-report3a-post') }}','report3')" value="下載生活美容報告">
 				</td>
 			</tr>
         		<tr>
 				<th>
 				</th>
 				<td>
-                                            <input type="button" onclick="submitForm('{{ URL::route('statistic-export-report3b-post') }}','report3')" value="下載員工報告">
+                                            <input type="button" onclick="submitForm('{{ URL::route('statistic-export-report3b-post') }}','report3')" value="下載醫學美容報告">
 				</td>
 			</tr>
         		<tr>
 				<th>
 				</th>
 				<td>
-                                            <input type="button" onclick="submitForm('{{ URL::route('statistic-export-report3c-post') }}','report3')" value="下載清潔報告">
+                                            <input type="button" onclick="submitForm('{{ URL::route('statistic-export-report3c-post') }}','report3')" value="下載預約服務報告">
                                             {{ Form::token() }}
 				</td>
 			</tr>
+        		<tr>
+				<th>
+				</th>
+				<td>
+                                            <input type="button" onclick="submitForm('{{ URL::route('statistic-export-report3d-post') }}','report3')" value="下載環境報告">
+                                            {{ Form::token() }}
+				</td>
+			</tr>
+
 			</table>
 		    </form>
     </p>
   </div>
-<h3>匯出員工服務排名月份報告</h3>
+<h3>匯出員工排名月份報告</h3>
   <div>
     <p>        
         <form action="{{ URL::route('statistic-export-report4-post') }}" method="post">
