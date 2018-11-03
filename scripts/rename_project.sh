@@ -1,7 +1,8 @@
 #!/usr/bin/sh
-working_directory=$1
-company_name=$2
+source_directory=$1
+working_directory=$2
+company_name=$3
 cd "$working_directory"
-mv company/www/company "company/www/$company_name"
-mv company/laravel-company "company/laravel-$company_name"
-mv company $company_name
+cp "$source_directory/company/www/company" "$working_directory/company/www/$company_name"
+cp "$source_directory/company/laravel-company "company/laravel-$company_name"
+cp "$source_directory/company" $company_name
