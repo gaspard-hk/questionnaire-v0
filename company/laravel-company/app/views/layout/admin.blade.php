@@ -29,10 +29,12 @@
                 <li class="ui-widget-header">問卷管理</li>                
                 <li style="white-space: nowrap;"><a href="{{ URL::route('account-list') }}">使用者</li>                
                 <li style="white-space: nowrap;"><a href="{{ URL::route('shops-list') }}">新增/移除店舖</li>
-		<li style="white-space: nowrap;"><a href="{{ URL::route('staff-list') }}">匯入美容師名單</li>
-		<li style="white-space: nowrap;"><a href="{{ URL::route('member-list') }}">匯入顧客名單</li>
+		        <li style="white-space: nowrap;"><a href="{{ URL::route('staff-list') }}">匯入美容師名單</li>
+		        <li style="white-space: nowrap;"><a href="{{ URL::route('member-list') }}">匯入顧客名單</li>
+                @if  (Session::get('usertype') == '1')
                 <li style="white-space: nowrap;"><a href="{{ URL::route('online-list') }}">管理問卷數據</li>
                 <li style="white-space: nowrap;"><a href="{{ URL::route('statistic-export') }}">匯出/移除問卷數據</li>
+                @endif
                 <li style="white-space: nowrap;"><a href="{{ URL::route('ipfilter-list') }}">IP過濾器</li>
                 <li style="white-space: nowrap;"><a href="{{ URL::route('audittrail-list') }}">系統使用紀綠</li>
                 <li style="white-space: nowrap;"><a href="{{ URL::route('account-signout') }}">登出</a></li>

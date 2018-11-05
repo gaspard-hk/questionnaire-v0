@@ -267,6 +267,7 @@ CREATE TABLE `users` (
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `username` varchar(20) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `type` int(2) DEFAULT NULL,
   `code` varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `active` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -284,7 +285,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (10,'','admin','$2y$10$1NesG9QEPVxhi901u3dnaeufCYUUZNNC3vhYOt07qTZSuqgzzzBbK','',0,'2015-02-02 15:01:14','2018-09-04 23:09:05',NULL,'0000-00-00 00:00:00');
+INSERT INTO `users` VALUES (10,'','admin','$2y$10$YsaSQDATmgz2LiwcBftYUOS7xMbreUkdxmiXCw.fOu8coVpQ.vjy2',1,'',0,'2015-02-02 15:01:14','2018-11-05 17:16:37',NULL,'0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 

@@ -130,6 +130,23 @@
 				</td>
 			</tr>
 			<tr>
+				<td>
+					類型:
+				</td>
+				<td>
+					<div class="field">
+  						<select name="type">
+						  <option value="1">管理員</option>
+						  <option value="2">普通</option>
+						</select>
+						
+						@if ($errors->has('username'))
+							{{ $errors->first('username')}}
+						@endif
+					</div>    
+				</td>
+			</tr>
+			<tr>
 				<th>
 				</th>
 				<td>

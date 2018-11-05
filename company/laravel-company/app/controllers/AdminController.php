@@ -22,8 +22,12 @@ class AdminController extends BaseController {
 
 	public function getAdmin()
 	{
-                //return 'Home.';
-                //$u = User::get(1);
+		//return 'Home.';
+		//$userid = Auth::id();
+		//return $userid;
+		//$user = User::get($userid);
+		//return Auth::
+
                 return View::make('admin.welcome');
 		//return Redirect::route('account-signin');
 	}

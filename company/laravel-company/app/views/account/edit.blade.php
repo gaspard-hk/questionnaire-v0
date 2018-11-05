@@ -88,6 +88,23 @@ jQuery( document ).ready(function( $ ) {
 				</td>
 			</tr>
 			<tr>
+				<td>
+					類型:
+				</td>
+				<td>
+					<div class="field">
+  						<select name="type">
+						  <option value="1" {{ ($user['type'] == 1) ? "selected" : "" }}>管理員</option>
+						  <option value="2" {{ ($user['type'] == 2) ? "selected" : "" }}>普通</option>
+						</select>
+						
+						@if ($errors->has('username'))
+							{{ $errors->first('username')}}
+						@endif
+					</div>    
+				</td>
+			</tr>
+			<tr>
 				<th>
                                     
 				</th>

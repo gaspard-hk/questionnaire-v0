@@ -57,6 +57,8 @@ class AccountController extends BaseController {
                 
                 if($auth){
                     $userid = Auth::id();
+                    $type = UsersList::where('id', $userid)->first()['type'];
+                    Session::set('usertype', $type); 
                     $username = Auth::user()->username;
                     $audittrailcreate = AuditTrail::create (array(                    
                         'IP' => Request::getClientIp(),
@@ -125,9 +127,10 @@ class AccountController extends BaseController {
                         ->withInput();
             }   else {
                 $create = User::create (array(
-                   'username' => Input::get('username'),
-                    'password' => Hash::make( Input::get('password') ),
-                        'active' => '1'
+                    'username'   => Input::get('username'),
+                    'type'       => Input::get('type'),
+                    'password'  => Hash::make( Input::get('password') ),
+                    'active' => '1'
                 ));
                 
                 if ($create){
@@ -161,6 +164,7 @@ class AccountController extends BaseController {
                     array(
                         //'username' => 'required|unique:users',
                         'username' => 'required|unique:users,deleted_at,NULL',
+                        'type'       => Input::get('type'),
                         'password' => 'required'
                     )
             );
@@ -289,6 +293,7 @@ class AccountController extends BaseController {
             }   else {
                 $user = User::findOrFail(Auth::id());
                 $user->password = Hash::make(Input::get('password'));
+                $user->type = Input::get('type');
                 $user->save();
                 
                 $users = UsersList::all();

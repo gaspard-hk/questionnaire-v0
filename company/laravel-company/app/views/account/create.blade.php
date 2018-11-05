@@ -26,7 +26,24 @@
 						@endif
 					</div>    
 				</td>
-			</tr>	
+			</tr>
+			<tr>
+				<th>
+					類型:
+				</th>
+				<td>
+					<div class="field">
+  						<select id="type">
+						  <option value="1">管理員</option>
+						  <option value="2">普通</option>
+						</select>
+						
+						@if ($errors->has('username'))
+							{{ $errors->first('username')}}
+						@endif
+					</div>    
+				</td>
+			</tr>
 			<tr>
 				<th>
 					密碼:

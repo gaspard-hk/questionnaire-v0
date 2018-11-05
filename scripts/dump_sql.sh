@@ -1,0 +1,1 @@
+mysqldump --routines -u company_sa -p company > questionnaire_sqldump.sql
