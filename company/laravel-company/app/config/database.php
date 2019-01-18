@@ -57,7 +57,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'company',
 			'username'  => 'company_sa',
-			'password'  => 'abcd1234',
+			'password'  => 'Efgh56&*',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
