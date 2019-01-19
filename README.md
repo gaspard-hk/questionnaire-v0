@@ -65,7 +65,7 @@ questionnaire_sqldump.sql
 users.sql
 ```
 
-Our repository doesn't require "composer install" as vendor folder is already included. It is because some of the library are outdated and cannot be downloaded from composer repo.
+Our repository doesn't require "composer install" as vendor folder is already included. It is because some of the libraries are outdated and cannot be downloaded from composer repo.
 
 Create the following 3 empty folders
 ```
@@ -89,7 +89,16 @@ If the website doesn't work, please check the following things.
    cd /var/log/httpd
    cat access_log
    cat error_log
+4. Run the permission scripts again
+   find /var/www -type d -exec sudo chmod 2775 {} \;
+   find /var/www -type f -exec sudo chmod 0664 {} \;
 
+```
+
+## System default login / password
+```
+Login : admin
+Password : abcd1234
 ```
 
 ## Version
