@@ -72,13 +72,13 @@ Create the following 3 empty folders
 /laravel-company/uploadfiles/
 /laravel-company/uploadfiles/member
 /laravel-company/uploadfiles/staff
+```
 
 Copy the following 2 folders from local to your aws : /var/www/html
 ```
 laravel-company
 www
 ```
-
 
 If the website doesn't work, please check the following things.
 ```
